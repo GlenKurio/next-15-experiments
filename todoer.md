@@ -1,6 +1,8 @@
+- Rewatch theory part of the video;
+
 - Auth:
-  -- Understand how to use actions - with buttons and onClick or with form and onSubmit?
+  -- Deisgn custom auth pages;
+  -- Create a design of authError pages with custom messages based on the error type; How do I pass error itself to the page?
   -- Create auth components - form with validation and social actions;
   -- Implement custom design for verification email;
-  -- How to customize pages to which user is redirected after clicking the button and after link verification?
   -- Implement auth with email & password;
