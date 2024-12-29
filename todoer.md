@@ -1,4 +1,6 @@
 - Auth:
   -- Understand how to use actions - with buttons and onClick or with form and onSubmit?
-  -- Implement auth with magic link;
+  -- Create auth components - form with validation and social actions;
+  -- Implement custom design for verification email;
+  -- How to customize pages to which user is redirected after clicking the button and after link verification?
   -- Implement auth with email & password;
