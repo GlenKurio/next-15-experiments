@@ -30,14 +30,25 @@ export default async function Navbar() {
               </Link>
             </>
           ) : (
-            <button
-              onClick={async () => {
-                "use server";
-                await signIn("github");
-              }}
-            >
-              <span>Sign in</span>
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={async () => {
+                  "use server";
+                  await signIn("github");
+                }}
+              >
+                <span>Sign in with GitHub</span>
+              </button>
+              <form
+                action={async (formData) => {
+                  "use server";
+                  await signIn("resend", formData);
+                }}
+              >
+                <input type="text" name="email" placeholder="Email" />
+                <button type="submit">Signin with Resend</button>
+              </form>
+            </div>
           )}
         </div>
       </nav>
