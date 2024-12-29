@@ -43,6 +43,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signOut: "/auth/signout",
     error: "/auth/error",
     verifyRequest: "/auth/verify-request",
-    newUser: "/auth/new-user",
+    // newUser: "/auth/new-user",
   },
 });

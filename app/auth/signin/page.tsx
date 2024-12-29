@@ -1,11 +1,17 @@
 import { redirect } from "next/navigation";
-
 import { AuthError } from "next-auth";
 import { providerMap, signIn } from "@/auth";
+
 const SIGNIN_ERROR_URL = "/auth/error";
-export default async function SignInPage(props: {
+
+export default async function SignInPage({
+  searchParams,
+}: {
   searchParams: { callbackUrl: string | undefined };
 }) {
+  //   need to await the searchParams to avoid warning: Dynamic APIs are Asynchronous (https://nextjs.org/docs/messages/sync-dynamic-apis)
+  const { callbackUrl } = await searchParams;
+
   return (
     <div className="flex flex-col gap-2">
       <form
@@ -31,27 +37,20 @@ export default async function SignInPage(props: {
         </label>
         <input type="submit" value="Sign In" />
       </form>
-      {Object.values(providerMap).map((provider) => (
+      {Object.values(providerMap)?.map((provider) => (
         <form
           key={provider.id}
           action={async () => {
             "use server";
             try {
+              // Use the pre-extracted callbackUrl here
               await signIn(provider.id, {
-                redirectTo: props.searchParams?.callbackUrl ?? "",
+                redirectTo: callbackUrl,
               });
             } catch (error) {
-              // Signin can fail for a number of reasons, such as the user
-              // not existing, or the user not having the correct role.
-              // In some cases, you may want to redirect to a custom error
               if (error instanceof AuthError) {
                 return redirect(`${SIGNIN_ERROR_URL}?error=${error.type}`);
               }
-
-              // Otherwise if a redirects happens Next.js can handle it
-              // so you can just re-thrown the error and let Next.js handle it.
-              // Docs:
-              // https://nextjs.org/docs/app/api-reference/functions/redirect#server-component
               throw error;
             }
           }}
