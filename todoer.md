@@ -1,0 +1,4 @@
+- Auth:
+  -- Understand how to use actions - with buttons and onClick or with form and onSubmit?
+  -- Implement auth with magic link;
+  -- Implement auth with email & password;
