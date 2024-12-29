@@ -7,7 +7,7 @@ const SIGNIN_ERROR_URL = "/auth/error";
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: { callbackUrl: string | undefined };
+  searchParams: Promise<{ callbackUrl: string | undefined }>;
 }) {
   //   need to await the searchParams to avoid warning: Dynamic APIs are Asynchronous (https://nextjs.org/docs/messages/sync-dynamic-apis)
   const { callbackUrl } = await searchParams;

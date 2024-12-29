@@ -1,5 +1,3 @@
-- Rewatch theory part of the video;
-
 - Auth:
   -- How to Link accounts ? Or how to let user know that they already have an account with another provider ?
   -- What exactly 'newUser' page is and what it does?
