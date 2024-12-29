@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { AuthError } from "next-auth";
-import { providerMap, signIn } from "@/auth";
+import { auth, providerMap, signIn } from "@/auth";
 
 const SIGNIN_ERROR_URL = "/auth/error";
 
@@ -11,7 +11,11 @@ export default async function SignInPage({
 }) {
   //   need to await the searchParams to avoid warning: Dynamic APIs are Asynchronous (https://nextjs.org/docs/messages/sync-dynamic-apis)
   const { callbackUrl } = await searchParams;
-
+  //   TODO: Can do it through the middleware by specifying different types of routes with differrent level of authentication protection
+  const session = await auth();
+  if (session && session.user) {
+    return redirect("/");
+  }
   return (
     <div className="flex flex-col gap-2">
       <form
