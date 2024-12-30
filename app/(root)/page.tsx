@@ -9,8 +9,9 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const { query } = await searchParams;
+  const params = { search: query || null };
   // const posts = await client.fetch(STARTUPS_QUERY); without live; with chache changed to false in the client, data updates on page refresh.
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY }); // with live updates in real time
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params }); // with live updates in real time
 
   return (
     <>
