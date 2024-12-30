@@ -7,3 +7,8 @@
   -- Implement custom design for verification email;
   -- Implement auth with email & password;
   -- Implement auth protection of routes with routes file and next middleware;
+  -- How to properly extend the Session and JWT types?
+  -- Do I need to specify strategy ?
+  -- Do I need to separate auth file into auth.config.ts and auth.ts ? Why ?
+  -- On signIn callback i can create a author in Sanity using 'profile' data from OAuthProvider but what if user chooses to sign in with email & password or magic link ? How do I control such situations ?
+- Rewatch the NEXT AUTH VIDEO;

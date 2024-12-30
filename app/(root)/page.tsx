@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
@@ -10,6 +11,8 @@ export default async function Home({
 }) {
   const { query } = await searchParams;
   const params = { search: query || null };
+  const session = await auth();
+  console.log(session?.id);
   // const posts = await client.fetch(STARTUPS_QUERY); without live; with chache changed to false in the client, data updates on page refresh.
   const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params }); // with live updates in real time
 
